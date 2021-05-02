@@ -381,6 +381,12 @@ export const defaultFilterRangeValues = {
     max: 20,
     value: 4,
   },
+  saturationRange: {
+    realTimeEvent: true,
+    min: -1,
+    max: 1,
+    value: 0,
+  },
   colorfilterThresholdRange: {
     realTimeEvent: true,
     min: 0,

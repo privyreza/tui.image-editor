@@ -107,6 +107,17 @@ export default ({ locale }) => `
                 </div>
             </div>
             <div class="tui-image-editor-checkbox-group tui-image-editor-disabled">
+                <div class="tui-image-editor-checkbox">
+                    <label>
+                        <input type="checkbox" class="tie-saturation">
+                        <span>${locale.localize('Saturation')}</span>
+                    </label>
+                </div>
+                <div class="tui-image-editor-range-wrap short">
+                    <div class="tie-saturation-range"></div>
+                </div>
+            </div>
+            <div class="tui-image-editor-checkbox-group tui-image-editor-disabled">
                 <div class="tui-image-editor-newline tui-image-editor-checkbox-wrap">
                     <div class="tui-image-editor-checkbox">
                         <label>

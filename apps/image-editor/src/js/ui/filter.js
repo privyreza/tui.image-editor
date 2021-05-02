@@ -24,7 +24,9 @@ const FILTER_OPTIONS = [
   'tint',
   'multiply',
   'blend',
+  'saturation',
 ];
+
 const filterNameMap = {
   grayscale: 'grayscale',
   invert: 'invert',
@@ -51,6 +53,7 @@ const RANGE_INSTANCE_NAMES = [
   'removewhiteDistanceRange',
   'colorfilterThresholdRange',
   'pixelateRange',
+  'saturationRange',
   'noiseRange',
   'brightnessRange',
   'tintOpacity',
@@ -150,6 +153,7 @@ class Filter extends Submenu {
     this._els.removewhiteDistanceRange.on('change', changeFilterStateForRange('removeWhite'));
     this._els.colorfilterThresholdRange.on('change', changeFilterStateForRange('colorFilter'));
     this._els.pixelateRange.on('change', changeFilterStateForRange('pixelate'));
+    this._els.saturationRange.on('change', changeFilterStateForRange('saturation'));
     this._els.noiseRange.on('change', changeFilterStateForRange('noise'));
     this._els.brightnessRange.on('change', changeFilterStateForRange('brightness'));
 
@@ -220,6 +224,8 @@ class Filter extends Submenu {
       this._els.removewhiteDistanceRange.value = options.distance;
     } else if (filterName === 'pixelate') {
       this._els.pixelateRange.value = options.blocksize;
+    } else if (filterName === 'saturation') {
+      this._els.saturationRange.value = options.saturation;
     } else if (filterName === 'brightness') {
       this._els.brightnessRange.value = options.brightness;
     } else if (filterName === 'noise') {
@@ -300,6 +306,9 @@ class Filter extends Submenu {
       case 'pixelate':
         option.blocksize = toInteger(this._els.pixelateRange.value);
         break;
+      case 'saturation':
+        option.saturation = parseFloat(this._els.saturationRange.value);
+        break;
       case 'noise':
         option.noise = toInteger(this._els.noiseRange.value);
         break;
@@ -343,6 +352,10 @@ class Filter extends Submenu {
       brightnessRange: new Range(
         { slider: this.selector('.tie-brightness-range') },
         FILTER_RANGE.brightnessRange
+      ),
+      saturationRange: new Range(
+        { slider: this.selector('.tie-saturation-range') },
+        FILTER_RANGE.saturationRange
       ),
       noiseRange: new Range({ slider: this.selector('.tie-noise-range') }, FILTER_RANGE.noiseRange),
       pixelateRange: new Range(
