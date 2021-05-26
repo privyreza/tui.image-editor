@@ -25,6 +25,8 @@ const FILTER_OPTIONS = [
   'multiply',
   'blend',
   'saturation',
+  'ink',
+  'rotation',
 ];
 
 const filterNameMap = {
@@ -46,17 +48,20 @@ const filterNameMap = {
   tint: 'blendColor',
   multiply: 'blendColor',
   blend: 'blendColor',
-  hue: 'hue',
   gamma: 'gamma',
+  ink: 'ink',
+  rotation: 'hueRotation',
 };
 const RANGE_INSTANCE_NAMES = [
   'removewhiteDistanceRange',
   'colorfilterThresholdRange',
   'pixelateRange',
   'saturationRange',
+  'inkRange',
   'noiseRange',
   'brightnessRange',
   'tintOpacity',
+  'hueRotationRange',
 ];
 const COLORPICKER_INSTANCE_NAMES = ['filterBlendColor', 'filterMultiplyColor', 'filterTintColor'];
 
@@ -154,6 +159,8 @@ class Filter extends Submenu {
     this._els.colorfilterThresholdRange.on('change', changeFilterStateForRange('colorFilter'));
     this._els.pixelateRange.on('change', changeFilterStateForRange('pixelate'));
     this._els.saturationRange.on('change', changeFilterStateForRange('saturation'));
+    this._els.hueRotationRange.on('change', changeFilterStateForRange('rotation'));
+    this._els.inkRange.on('change', changeFilterStateForRange('ink'));
     this._els.noiseRange.on('change', changeFilterStateForRange('noise'));
     this._els.brightnessRange.on('change', changeFilterStateForRange('brightness'));
 
@@ -226,6 +233,10 @@ class Filter extends Submenu {
       this._els.pixelateRange.value = options.blocksize;
     } else if (filterName === 'saturation') {
       this._els.saturationRange.value = options.saturation;
+    } else if (filterName === 'rotation') {
+      this._els.hueRotationRange.value = options.rotation;
+    } else if (filterName === 'ink') {
+      this._els.inkRange.value = options.ink;
     } else if (filterName === 'brightness') {
       this._els.brightnessRange.value = options.brightness;
     } else if (filterName === 'noise') {
@@ -309,6 +320,12 @@ class Filter extends Submenu {
       case 'saturation':
         option.saturation = parseFloat(this._els.saturationRange.value);
         break;
+      case 'rotation':
+        option.rotation = parseFloat(this._els.hueRotationRange.value);
+        break;
+      case 'ink':
+        option.ink = parseFloat(this._els.inkRange.value);
+        break;
       case 'noise':
         option.noise = toInteger(this._els.noiseRange.value);
         break;
@@ -357,6 +374,11 @@ class Filter extends Submenu {
         { slider: this.selector('.tie-saturation-range') },
         FILTER_RANGE.saturationRange
       ),
+      hueRotationRange: new Range(
+        { slider: this.selector('.tie-rotation-range') },
+        FILTER_RANGE.hueRotationRange
+      ),
+      inkRange: new Range({ slider: this.selector('.tie-ink-range') }, FILTER_RANGE.inkRange),
       noiseRange: new Range({ slider: this.selector('.tie-noise-range') }, FILTER_RANGE.noiseRange),
       pixelateRange: new Range(
         { slider: this.selector('.tie-pixelate-range') },

@@ -1,2 +1,5 @@
 # Ignore polyfill
 src/js/polyfill.js
+
+#ignore glfx lib
+src/js/lib/*

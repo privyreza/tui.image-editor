@@ -118,6 +118,28 @@ export default ({ locale }) => `
                 </div>
             </div>
             <div class="tui-image-editor-checkbox-group tui-image-editor-disabled">
+                <div class="tui-image-editor-checkbox">
+                    <label>
+                        <input type="checkbox" class="tie-rotation">
+                        <span>${locale.localize('Hue')}</span>
+                    </label>
+                </div>
+                <div class="tui-image-editor-range-wrap short">
+                    <div class="tie-rotation-range"></div>
+                </div>
+            </div>
+            <div class="tui-image-editor-checkbox-group tui-image-editor-disabled">
+                <div class="tui-image-editor-checkbox">
+                    <label>
+                        <input type="checkbox" class="tie-ink">
+                        <span>${locale.localize('Ink')}</span>
+                    </label>
+                </div>
+                <div class="tui-image-editor-range-wrap short">
+                    <div class="tie-ink-range"></div>
+                </div>
+            </div>
+            <div class="tui-image-editor-checkbox-group tui-image-editor-disabled">
                 <div class="tui-image-editor-newline tui-image-editor-checkbox-wrap">
                     <div class="tui-image-editor-checkbox">
                         <label>

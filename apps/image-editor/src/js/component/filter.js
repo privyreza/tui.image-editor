@@ -11,13 +11,17 @@ import Mask from '@/extension/mask';
 import Sharpen from '@/extension/sharpen';
 import Emboss from '@/extension/emboss';
 import ColorFilter from '@/extension/colorFilter';
+import Ink from '@/extension/ink';
 
 const { filters } = fabric.Image;
+
+console.log(filters);
 
 filters.Mask = Mask;
 filters.Sharpen = Sharpen;
 filters.Emboss = Emboss;
 filters.ColorFilter = ColorFilter;
+filters.Ink = Ink;
 
 /**
  * Filter
@@ -42,6 +46,9 @@ class Filter extends Component {
       const sourceImg = this._getSourceImage();
       const canvas = this.getCanvas();
       let imgFilter = this._getFilter(sourceImg, type);
+
+      console.log(imgFilter);
+
       if (!imgFilter) {
         imgFilter = this._createFilter(sourceImg, type, options);
       }

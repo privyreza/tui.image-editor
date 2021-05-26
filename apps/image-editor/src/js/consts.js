@@ -386,6 +386,21 @@ export const defaultFilterRangeValues = {
     min: -1,
     max: 1,
     value: 0,
+    useDecimal: true,
+  },
+  hueRotationRange: {
+    realTimeEvent: true,
+    min: -1,
+    max: 1,
+    value: 0,
+    useDecimal: true,
+  },
+  inkRange: {
+    realTimeEvent: true,
+    min: -1,
+    max: 1,
+    value: 0,
+    useDecimal: true,
   },
   colorfilterThresholdRange: {
     realTimeEvent: true,
